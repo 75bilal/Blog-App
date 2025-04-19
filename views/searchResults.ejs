@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <%- include('./partials/head') %>
+  <title>home Page</title>
+  <style>
+   h1 {
+      margin-top: 4px;
+      text-align: center;
+    }
+    </style>
+</head>
+<body>
+  <%- include('./partials/navbar') %>
+  <h1>Welcome to Blog App</h1>
+  
+  <% if (locals.blogs) { %>
+  <div class="container mt-3">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+       
+      <% blogs.forEach(blog => { %>
+        <div class="col">
+          <div class="card ">
+            <img class="card-img-top" src="<%= blog.coverImage %>" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"><%= blog.title %></h5>
+              <a href="/blog/<%= blog._id %>" class="btn btn-primary">View content</a>
+            </div>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+  <% } %>
+  
+
+
+<%- include('./partials/script') %>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+    <title>Signup page</title>
+    <style>
+      /* Optional: Additional styling for more padding and spacing */
+      body {
+        padding-top: 20px; /* Adds space on top */
+      }
+      .container {
+        max-width: 500px; /* Restricts width of the form */
+        margin: 0 auto; /* Centers the form horizontally */
+        box-shadow: 0 4px 8px 0 rgba(62, 62, 62, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 6px;
+      }
+
+      h1 {
+        text-align: center;
+      }
+      .submit-btn-container {
+        display: flex;
+        justify-content: center;
+      }
+      .btn {
+        margin-bottom: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('./partials/navbar') %>
+    <div class="container mt-5">
+      <h1>Sign Up</h1>
+      <form action="/user/" method="POST">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">UserName</label>
+          <input
+            type="text"
+            name="username"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label"
+            >Email address</label>
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+          />
+          <div id="emailHelp" class="form-text">
+            We'll never share your email with anyone else.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            id="exampleInputPassword1"
+          />
+        </div>
+        <div class="submit-btn-container">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <%- include('./partials/script') %>
+  </body>
+</html>
