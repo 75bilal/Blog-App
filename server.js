@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require("express");
 const app = express();
 const PORT =  process.env.PORT ||3000;
@@ -14,9 +15,10 @@ const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 
 // connectDB
-mongoose
-  .connect("mongodb://127.0.0.1:27017/Notesproject")
-  .then(() => console.log("monogodb conected"));
+mongoose.connect(process.env.MONGO_URL)
+.then(() => console.log("MongoDB connected"))
+.catch((err) => console.log("MongoDB Error =>", err));
+
 
 //middleware
 const { checkAuth, checkAuthorization } = require("./middleware/auth");
