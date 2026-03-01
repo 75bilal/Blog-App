@@ -29,7 +29,8 @@ router.post("/", checkAuthorization(['USER' ,"ADMIN"]),upload.single("coverImage
     title,
     content,
     createdBy: req.user._id,
-    coverImage: `/uploads/${req.file.filename}`,
+    coverImage: req.file ? `/uploads/${req.file.filename}` : null,
+    //coverImage: `/uploads/${req.file.filename}`,
   });
   return res.redirect(`/blog/${userBlog._id}`);
 });

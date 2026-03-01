@@ -1,0 +1,29 @@
+
+services:
+   mongodb:
+    image: mongo
+    environment:
+      - name=value
+    restart: unless-stopped
+    ports:
+     - "27017:27017"
+    networks:
+      - blog-app
+    volumes:
+     - db-data:/data/db
+   backend:
+     build: .
+     depends_on:
+      - mongodb
+     environment:
+       MONGO_URL: ${MONGO_URL}
+     restart: on-failure
+     ports:
+      - "3000:3000"
+     networks:
+      - blog-app
+networks:
+  blog-app:
+    driver: bridge
+volumes:
+ db-data:
